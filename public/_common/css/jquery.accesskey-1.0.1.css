@@ -1,0 +1,18 @@
+.akh__highlighted {
+    color: #900;
+    background-color: #fdda8d;
+}
+
+.akh__popup {
+	position: absolute;
+	width: 16px;
+	height: 17px;
+	overflow: hidden;
+	line-height: 17px;
+	background: url('images/accessibility-popup-bg.png') left top no-repeat;
+	color: #900;
+	font-size: 11px;
+	text-align: center;
+	cursor: default;
+	display: none;
+}
