@@ -43,4 +43,8 @@ class ehacController extends Controller {
 
 		return view('ehac',['logo'=>$logo]);
 	}
+	public function healthcheck()
+	{
+		return "<marquee>Hello!</marquee>";
+	}
 }

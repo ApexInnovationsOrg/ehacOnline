@@ -25,6 +25,7 @@ Route::any('/admin/showCommunity/{community?}','adminController@showCommunity');
 Route::any('/admin/postAddCommunity','adminController@postAddCommunity');
 Route::get('/admin/reports','adminController@reports');
 Route::get('/communityAdmin/{community?}','communityController@index');
+Route::get('/healthcheck.html','ehacController@healthcheck');
 
 
 
