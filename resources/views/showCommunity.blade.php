@@ -41,8 +41,9 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="orgSearch" ><img id="loader" class="loader" src="/images/ui-anim_basic_16x16.gif" />&nbsp;&nbsp;Organization</label>
 				  <div class="col-md-5">
-				    <input id="orgSearch" name="orgSearch" type="search" placeholder="Organization name or ID" class="typeahead tt-query form-control input-md" autocomplete="off" value="{{ isset($community->OrganizationID) ? $org->Name . ' :: ' . $org->ID : old('orgSearch') }}" >
-				    <input id="orgID" type="hidden" name="orgID" value="{{ isset($community->OrganizationID) ? $community->OrganizationID : old('OrganizationID') }}">
+				    <input id="orgSearch" name="orgSearch" type="search" placeholder="Organization name or ID" class="typeahead tt-query form-control input-md" autocomplete="off" 
+				    value="{{ $community->OrganizationID > 0 ? $org->Name . ' :: ' . $org->ID : old('orgSearch') }}" >
+				    <input id="orgID" type="hidden" name="orgID" value="{{ $community->OrganizationID > 0 ? $community->OrganizationID : old('OrganizationID') }}">
 				    <p class="help-block">Organization Name or ID.</p>
 				  </div>
 				</div>
