@@ -173,7 +173,7 @@ class adminController extends Controller {
 	public function communityList()
 	{
 		//this will get slower over time....
-		$communities = Communities::select('Communities.*','Organizations.Name AS OrgName')->where('Communities.ID','>',1)->orderBy('Communities.Name','desc')->join('Organizations','Communities.OrganizationID','=','Organizations.ID')->get();
+		$communities = Communities::select('Communities.*','Organizations.Name AS OrgName')->where('Communities.ID','>',1)->orderBy('Communities.Name','desc')->leftJoin('Organizations','Communities.OrganizationID','=','Organizations.ID')->get();
 
 			foreach($communities as $community)
 			{
