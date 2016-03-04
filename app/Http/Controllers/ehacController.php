@@ -21,7 +21,10 @@ class ehacController extends Controller {
 	{
 
 		$logo = 'apexLogo.png';
-		$subdomain = strtolower(array_shift((explode(".",$_SERVER['HTTP_HOST']))));
+		$host = $_SERVER['HTTP_HOST'];
+		$subdomainName = (explode(".",$host));
+		array_shift($subdomainName);
+		$subdomain = strtolower($subdomainName);
 		Session::set('subdomain','');
 		if($subdomain !== 'ehaconline' && $subdomain !== 'www')
 		{
