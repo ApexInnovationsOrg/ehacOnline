@@ -9,8 +9,10 @@ class UserRepository {
         // $user = User::where('provider_id', '=', $userData->id)->first();
         $user = User::where('Login', '=', $userData->user['email'])->first();
 
-        
-        $subdomain = strtolower(array_shift((explode(".",$_SERVER['HTTP_HOST']))));
+        $host = $_SERVER['HTTP_HOST'];
+        $subdomainName = (explode(".",$host));
+        array_shift($subdomainName);
+        $subdomain = strtolower($subdomainName[0]);
 
 
             $community = Communities::where('Name','=',$subdomain)->first();

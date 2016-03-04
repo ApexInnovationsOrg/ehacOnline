@@ -92,7 +92,7 @@ trait ResetsPasswords {
 		if (is_null($token))
 		{
 			//throw new NotFoundHttpException;
-			return view('auth.login')->withErrors(['Login' => 'No token specified']);;
+			return view('auth.login')->withErrors(['Login' => 'No token specified']);
 		}
 
 		return view('auth.reset')->with('token', $token);
