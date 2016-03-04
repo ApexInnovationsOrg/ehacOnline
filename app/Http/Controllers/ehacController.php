@@ -24,7 +24,7 @@ class ehacController extends Controller {
 		$host = $_SERVER['HTTP_HOST'];
 		$subdomainName = (explode(".",$host));
 		array_shift($subdomainName);
-		$subdomain = strtolower($subdomainName);
+		$subdomain = strtolower($subdomainName[0]);
 		Session::set('subdomain','');
 		if($subdomain !== 'ehaconline' && $subdomain !== 'www')
 		{
