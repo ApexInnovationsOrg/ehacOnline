@@ -32,6 +32,6 @@ class AuthenticateUser {
     }
 
     private function getSocialUser($provider) {
-        return $this->socialite->driver($provider)->user();
+        return $this->socialite->driver($provider)->fields(['first_name','last_name','name','email','gender','verified','link','id'])->user();
     }
 }
