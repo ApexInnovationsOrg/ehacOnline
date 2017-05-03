@@ -20,7 +20,7 @@ class ehacController extends Controller {
 	public function index()
 	{
 
-		$logo = 'apexLogo.png';
+		$logo = 'https://ehaconline.com/images/logos/apexLogo.png';
 		$host = $_SERVER['SERVER_NAME'];
 		$subdomain = strstr($host, '.', true);
 		Session::set('subdomain','');
@@ -33,7 +33,12 @@ class ehacController extends Controller {
 				{
 					return redirect('https://ehaconline.com')->withErrors(['Inactive'=>'The community you entered (' . $subdomain . ') is inactive.']);
 				}
-				$logo = $subdomain . '.png';
+
+				if($community->LogoURL !== null)
+				{
+					$logo = $community->LogoURL;
+				}
+
 				Session::set('subdomain',$subdomain);
 			}
 			else

@@ -72,13 +72,17 @@ class adminController extends Controller {
 			
 			
 			//after compression and resizing, download the file to the filesyste in /public/images/logos/$communityName
-			Storage::disk('logos')->put($request->communityName . '.png', file_get_contents($downloadURL));
+			//20170503EM why not use a CDN instead?
+			// Storage::disk('logos')->put($request->communityName . '.png', file_get_contents($downloadURL));
+			Storage::disk('rackspace')->put($request->communityName . '.png', file_get_contents($downloadURL));
 			
 			$community = new Communities;
 			$community->name = strtolower($request->communityName);
 			$community->Fullname = $request->fullName;
 			$community->OrganizationID = $request->orgID;
 			$community->Active = 'Y';
+			$community->LogoURL = env('CDN_PREFIX') . $request->communityName . '.png';
+
 			$community->save();
 			
 			return redirect('/admin')->with('message','Successfully created ' . $community->FullName);
@@ -129,6 +133,10 @@ class adminController extends Controller {
 
 			//compress and resize the image automatically
 			$file = $request->file('logoUpload');
+			$community = Communities::where('ID','=',$request->ID)->first();
+			$community->Name = strtolower($request->communityName);
+			$community->OrganizationID = $request->orgID;
+
 			if($file !== null)
 			{
 				$tinyPng = new TinyPNG('NJzPkYbMKcQNhTpputkaWw0uQbW7vWUe');
@@ -144,12 +152,10 @@ class adminController extends Controller {
 			
 				
 				//after compression and resizing, download the file to the filesyste in /public/images/logos/$communityName
-				Storage::disk('logos')->put($request->communityName . '.png', file_get_contents($downloadURL));
-			}
+				$file = Storage::disk('rackspace')->put($request->communityName . '.png', file_get_contents($downloadURL));
 
-			$community = Communities::where('ID','=',$request->ID)->first();
-			$community->Name = strtolower($request->communityName);
-			$community->OrganizationID = $request->orgID;
+				$community->LogoURL = env('CDN_PREFIX') . $request->communityName . '.png';
+			}
 
 			if($request->fullName !== '')
 			{
@@ -179,7 +185,7 @@ class adminController extends Controller {
 			{
 				$response[] = [
 					'community'=>"<span style='display:none'>" . $community->Name . "</span><a href=" . url("admin/showCommunity/$community->Name") .">" . ($community->FullName === null  ? $community->Name : $community->FullName) . "</a>",
-					'logo'=>"<img style='max-height:100px;max-width:100px;text-align:center;' src=" . url("/images/logos/" . $community->Name . ".png") ."/>",
+					'logo'=>$community->LogoURL == null ? '' : "<img style='max-height:100px;max-width:100px;text-align:center;' src='" . $community->LogoURL ."' />",
 					'organization'=>empty($community->OrgName) ? '' : $community->OrgName,
 					'created' => (string)$community->created_at,
 					'activeStatus' => $community->Active
