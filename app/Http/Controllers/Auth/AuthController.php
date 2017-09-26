@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request as Request;
 use Session;
+use Validator;
+use App\User;
 
 class AuthController extends Controller {
 
@@ -82,5 +84,39 @@ class AuthController extends Controller {
 	    	return redirect('home');
 	    }
 
+	}
+
+
+
+	/**
+	 * Get a validator for an incoming registration request.
+	 *
+	 * @param  array  $data
+	 * @return \Illuminate\Contracts\Validation\Validator
+	 */
+	public function validator(array $data)
+	{
+		return Validator::make($data, [
+			'FirstName' => 'required|max:255',
+			'LastName' => 'required|max:255',
+			'Login' => 'required|email|max:255|unique:Users,Login',
+			'Password' => 'required|confirmed|min:6',
+		]);
+	}
+
+	/**
+	 * Create a new user instance after a valid registration.
+	 *
+	 * @param  array  $data
+	 * @return User
+	 */
+	public function create(array $data)
+	{
+		return User::create([
+			'FirstName' => $data['FirstName'],
+			'LastName' => $data['LastName'],
+			'Login' => $data['Login'],
+			'Password' => bcrypt($data['Password']),
+		]);
 	}
 }
