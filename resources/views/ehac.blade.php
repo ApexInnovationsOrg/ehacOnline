@@ -76,7 +76,7 @@
             </div>
           </div>
             <div class="row">
-            	<div class="col-md-12 cover-heading"><img src='images/logos/{{ $logo }}'/></div>
+            	<div class="col-md-12 cover-heading"><img src='{{ $logo }}'/></div>
             </div>
             
             <hr class="thickNBlue"/>

@@ -138,6 +138,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 
 		/*

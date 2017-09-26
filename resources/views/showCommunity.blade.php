@@ -61,7 +61,7 @@
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="logoUpload">Community Logo</label>
 				  <div class="col-md-4">
-					  <img style="max-width:200px; max-height:200px; display:block;" src="{{ url('/images/logos/' . $community->Name) . '.png'}}" />
+					  <img style="max-width:200px; max-height:200px; display:block;" src="{{ $community->LogoURL }}" />
 				  </div>
 				</div>
 				<!-- Image update -->

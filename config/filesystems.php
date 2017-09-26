@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'default' => 'local',
+	'default' => 'rackspace',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'cloud' => 's3',
+	'cloud' => 'rackspace',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,11 +64,11 @@ return [
 
 		'rackspace' => [
 			'driver'    => 'rackspace',
-			'username'  => 'your-username',
-			'key'       => 'your-key',
-			'container' => 'your-container',
+			'username'  =>  env('RACKSPACE_USER', 'noUser'),
+			'key'       =>  env('RACKSPACE_API', 'dootdoot'),
+			'container' =>  env('RACKSPACE_CONTAINER', 'ehaconline'),
 			'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
-			'region'    => 'IAD',
+			'region'    => 	env('RACKSPACE_REGION','ORD'),
 		],
 
 	],

@@ -17,7 +17,7 @@ class Communities extends Model {
 	 * @var array
 	 */
 	protected $fillable = [
-		'Name','FullName','Active','OrganizationID'
+		'Name','FullName','Active','OrganizationID','LogoURL'
 	];
 
 }
