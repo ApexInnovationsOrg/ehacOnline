@@ -36,7 +36,7 @@ return [
 	'facebook' => [
 		'client_id' => '1376073959384398',
 	    'client_secret' => 'e05cbeb1e21beea0a1ab9bc52940bf0b',
-	    'redirect' => 'http://ehaconline.com/login/facebook',
+	    'redirect' => 'https://ehaconline.com/login/facebook',
 	]
 
 
