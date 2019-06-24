@@ -1,7 +1,8 @@
 @extends('ehacMaster')
 
 @section('content')
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=1376073959384398&autoLogAppEvents=1"></script>
  <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
@@ -83,7 +84,7 @@
 
             <p class="lead">Early Heart Attack Care Program</p>
             <p class="lead">
-              <a href="{{ url('/login/facebook') }}" class="hvr-grow-shadow"><img class="ehacButton" src="images/EHAC_Button.png"/></a>
+               <div class="fb-login-button hvr-grow-shadow" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
               <br/>
               <br/>
               <a class="noFacebook hvr-float-shadow"  href="#" data-toggle="modal" data-target="#loginModal">Don't have Facebook?</a>
